@@ -74,6 +74,38 @@ test('POST', function(t) {
       var req = reqs[0]
       t.equal(req.path, '/' + bin.name, 'path matches')
       t.equal(req.body, 'hello', 'body matches')
+      t.equal(req.method, 'POST', 'POST')
+      t.end()
+    })
+  })
+})
+
+test('PUT', function(t) {
+  nets({url: binUrl + '/' + bin.name, headers: headers, method: "PUT", body: "hello put"}, function(err, resp, body) {
+    t.notOk(err, 'no err')
+    t.equal(resp.statusCode, 200, '200 OK')
+    getRequests(function(err, resp, reqs) {
+      t.notOk(err, 'no err')
+      t.equal(reqs.length, 5)
+      var req = reqs[0]
+      t.equal(req.path, '/' + bin.name, 'path matches')
+      t.equal(req.body, 'hello put', 'body matches')
+      t.equal(req.method, 'PUT', 'PUT')
+      t.end()
+    })
+  })
+})
+
+test('DELETE', function(t) {
+  nets({url: binUrl + '/' + bin.name, headers: headers, method: "DELETE"}, function(err, resp, body) {
+    t.notOk(err, 'no err')
+    t.equal(resp.statusCode, 200, '200 OK')
+    getRequests(function(err, resp, reqs) {
+      t.notOk(err, 'no err')
+      t.equal(reqs.length, 6)
+      var req = reqs[0]
+      t.equal(req.path, '/' + bin.name, 'path matches')
+      t.equal(req.method, 'DELETE')
       t.end()
     })
   })
