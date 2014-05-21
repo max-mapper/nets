@@ -1,7 +1,7 @@
 {
   "name": "nets",
-  "version": "0.0.0",
-  "description": "Travis    | Browsers (WIP)  ------------ | -------------- [![Travis](http://img.shields.io/travis/maxogden/nets.svg?style=flat)](https://travis-ci.org/maxogden/nets) | [![testling badge](https://ci.testling.com/maxogden/nets.png)](https://ci.testling.com/maxogden/nets)",
+  "version": "1.0.0",
+  "description": "nothin but nets. http client that works in node and browsers",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"
