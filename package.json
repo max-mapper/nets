@@ -1,0 +1,28 @@
+{
+  "name": "nets",
+  "version": "0.0.0",
+  "description": "Travis    | Browsers (WIP)  ------------ | -------------- [![Travis](http://img.shields.io/travis/maxogden/nets.svg?style=flat)](https://travis-ci.org/maxogden/nets) | [![testling badge](https://ci.testling.com/maxogden/nets.png)](https://ci.testling.com/maxogden/nets)",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "author": "max ogden",
+  "license": "ISC",
+  "browser": {
+    "request": "xhr"
+  },
+  "dependencies": {
+    "request": "^2.36.0",
+    "tape": "^2.13.1",
+    "xhr": "^1.6.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxogden/nets.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maxogden/nets/issues"
+  },
+  "homepage": "https://github.com/maxogden/nets"
+}
