@@ -1,7 +1,7 @@
 var test = require('tape')
 var nets = require('./')
 var bin
-var binUrl = 'http://cors.maxogden.com/requestb.in'
+var binUrl = 'http://162.243.142.156:49153/requestb.in'
 
 var headers = {
   'x-requested-with': 'nets',
@@ -21,6 +21,7 @@ test('GET a new requestbin for this test run', function(t) {
 
 test('GET url property', function(t) {
   nets({url: binUrl + '/' + bin.name, headers: headers},function(err, resp, body) {
+    t.ok(Buffer.isBuffer(body), 'response data is a Buffer by default')
     t.notOk(err, 'no err')
     t.equal(resp.statusCode, 200, '200 OK')
     getRequests(function(err, resp, reqs) {
