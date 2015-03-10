@@ -12,9 +12,9 @@
     "request": "xhr"
   },
   "dependencies": {
-    "request": "^2.36.0",
+    "request": "^2.53.0",
     "tape": "^2.13.1",
-    "xhr": "^1.6.1"
+    "xhr": "^2.0.1"
   },
   "devDependencies": {},
   "repository": {
