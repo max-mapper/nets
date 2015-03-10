@@ -4,7 +4,7 @@
   "description": "nothin but nets. http client that works in node and browsers",
   "main": "index.js",
   "scripts": {
-    "test": "node test.js"
+    "test": "standard && node test.js"
   },
   "author": "max ogden",
   "license": "ISC",
@@ -16,7 +16,9 @@
     "tape": "^2.13.1",
     "xhr": "^2.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "standard": "^3.0.0-beta"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/maxogden/nets.git"

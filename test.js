@@ -4,10 +4,10 @@ var bin
 var binUrl = 'http://requestb.in'
 
 var headers = {
-  "x-requested-with": "nets",
-  "Cache-Control": "no-cache, no-store, must-revalidate",
-  "Pragma": "no-cache",
-  "Expires": "0"
+  'x-requested-with': 'nets',
+  'Cache-Control': 'no-cache, no-store, must-revalidate',
+  'Pragma': 'no-cache',
+  'Expires': '0'
 }
 
 test('GET a new requestbin for this test run', function (t) {
@@ -20,7 +20,7 @@ test('GET a new requestbin for this test run', function (t) {
 })
 
 test('GET url property', function (t) {
-  nets({url: binUrl + '/' + bin.name, headers: headers},function (err, resp, body) {
+  nets({url: binUrl + '/' + bin.name, headers: headers}, function (err, resp, body) {
     t.ok(Buffer.isBuffer(body), 'response data is a Buffer by default')
     t.notOk(err, 'no err')
     t.equal(resp.statusCode, 200, '200 OK')
@@ -112,14 +112,14 @@ test('DELETE', function (t) {
   })
 })
 
-function getRequests(cb) {
+function getRequests (cb) {
   nets({
     url: binUrl + '/api/v1/bins/' + bin.name + '/requests',
     json: true,
     headers: headers
   }, function (err, resp, body) {
-    cb(err, resp, body)
-  })
+      cb(err, resp, body)
+    })
 }
 
 // {
