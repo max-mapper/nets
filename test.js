@@ -1,7 +1,7 @@
 var test = require('tape')
 var nets = require('./')
 var bin
-var binUrl = 'http://162.243.142.156:49153/requestb.in'
+var binUrl = 'http://requestb.in'
 
 var headers = {
   'x-requested-with': 'nets',
