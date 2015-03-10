@@ -2,7 +2,7 @@ var req = require('request')
 
 module.exports = Nets
 
-function Nets(opts, cb) {
+function Nets (opts, cb) {
   if (typeof opts === 'string') opts = { uri: opts }
 
   // in node, if encoding === null then response will be a Buffer. we want this to be the default
@@ -12,12 +12,13 @@ function Nets(opts, cb) {
   if (process.browser && !opts.hasOwnProperty('json') && opts.encoding === null) {
     opts.responseType = 'arraybuffer'
     var originalCb = cb
-    function bufferify(err, resp, body) {
-      if (body) body = new Buffer(new Uint8Array(body))
-      originalCb(err, resp, body)
-    }
     cb = bufferify
   }
-  
+
+  function bufferify (err, resp, body) {
+    if (body) body = new Buffer(new Uint8Array(body))
+    originalCb(err, resp, body)
+  }
+
   req(opts, cb)
 }

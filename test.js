@@ -4,14 +4,14 @@ var bin
 var binUrl = 'http://requestb.in'
 
 var headers = {
-  'x-requested-with': 'nets',
+  "x-requested-with": "nets",
   "Cache-Control": "no-cache, no-store, must-revalidate",
   "Pragma": "no-cache",
   "Expires": "0"
 }
 
-test('GET a new requestbin for this test run', function(t) {
-  nets({url: binUrl + '/api/v1/bins', method: 'POST', json: true, headers: headers}, function(err, resp, newBin) {
+test('GET a new requestbin for this test run', function (t) {
+  nets({url: binUrl + '/api/v1/bins', method: 'POST', json: true, headers: headers}, function (err, resp, newBin) {
     t.notOk(err, 'no err')
     t.ok(newBin.name, 'bin has a name')
     bin = newBin
@@ -19,12 +19,12 @@ test('GET a new requestbin for this test run', function(t) {
   })
 })
 
-test('GET url property', function(t) {
-  nets({url: binUrl + '/' + bin.name, headers: headers},function(err, resp, body) {
+test('GET url property', function (t) {
+  nets({url: binUrl + '/' + bin.name, headers: headers},function (err, resp, body) {
     t.ok(Buffer.isBuffer(body), 'response data is a Buffer by default')
     t.notOk(err, 'no err')
     t.equal(resp.statusCode, 200, '200 OK')
-    getRequests(function(err, resp, reqs) {
+    getRequests(function (err, resp, reqs) {
       t.notOk(err, 'no err')
       t.equal(reqs.length, 1)
       var req = reqs[0]
@@ -34,11 +34,11 @@ test('GET url property', function(t) {
   })
 })
 
-test('GET uri property', function(t) {
-  nets({uri: binUrl + '/' + bin.name, headers: headers}, function(err, resp, body) {
+test('GET uri property', function (t) {
+  nets({uri: binUrl + '/' + bin.name, headers: headers}, function (err, resp, body) {
     t.notOk(err, 'no err')
     t.equal(resp.statusCode, 200, '200 OK')
-    getRequests(function(err, resp, reqs) {
+    getRequests(function (err, resp, reqs) {
       t.notOk(err, 'no err')
       t.equal(reqs.length, 2)
       var req = reqs[0]
@@ -48,13 +48,13 @@ test('GET uri property', function(t) {
   })
 })
 
-test('GET w/ custom header', function(t) {
+test('GET w/ custom header', function (t) {
   headers['X-Hello'] = 'hello!'
-  nets({url: binUrl + '/' + bin.name, headers: headers}, function(err, resp, body) {
+  nets({url: binUrl + '/' + bin.name, headers: headers}, function (err, resp, body) {
     delete headers['X-Hello']
     t.notOk(err, 'no err')
     t.equal(resp.statusCode, 200, '200 OK')
-    getRequests(function(err, resp, reqs) {
+    getRequests(function (err, resp, reqs) {
       t.notOk(err, 'no err')
       t.equal(reqs.length, 3)
       var req = reqs[0]
@@ -65,11 +65,11 @@ test('GET w/ custom header', function(t) {
   })
 })
 
-test('POST', function(t) {
-  nets({url: binUrl + '/' + bin.name, headers: headers, method: "POST", body: "hello"}, function(err, resp, body) {
+test('POST', function (t) {
+  nets({url: binUrl + '/' + bin.name, headers: headers, method: 'POST', body: 'hello'}, function (err, resp, body) {
     t.notOk(err, 'no err')
     t.equal(resp.statusCode, 200, '200 OK')
-    getRequests(function(err, resp, reqs) {
+    getRequests(function (err, resp, reqs) {
       t.notOk(err, 'no err')
       t.equal(reqs.length, 4)
       var req = reqs[0]
@@ -81,11 +81,11 @@ test('POST', function(t) {
   })
 })
 
-test('PUT', function(t) {
-  nets({url: binUrl + '/' + bin.name, headers: headers, method: "PUT", body: "hello put"}, function(err, resp, body) {
+test('PUT', function (t) {
+  nets({url: binUrl + '/' + bin.name, headers: headers, method: 'PUT', body: 'hello put'}, function (err, resp, body) {
     t.notOk(err, 'no err')
     t.equal(resp.statusCode, 200, '200 OK')
-    getRequests(function(err, resp, reqs) {
+    getRequests(function (err, resp, reqs) {
       t.notOk(err, 'no err')
       t.equal(reqs.length, 5)
       var req = reqs[0]
@@ -97,11 +97,11 @@ test('PUT', function(t) {
   })
 })
 
-test('DELETE', function(t) {
-  nets({url: binUrl + '/' + bin.name, headers: headers, method: "DELETE"}, function(err, resp, body) {
+test('DELETE', function (t) {
+  nets({url: binUrl + '/' + bin.name, headers: headers, method: 'DELETE'}, function (err, resp, body) {
     t.notOk(err, 'no err')
     t.equal(resp.statusCode, 200, '200 OK')
-    getRequests(function(err, resp, reqs) {
+    getRequests(function (err, resp, reqs) {
       t.notOk(err, 'no err')
       t.equal(reqs.length, 6)
       var req = reqs[0]
@@ -117,13 +117,13 @@ function getRequests(cb) {
     url: binUrl + '/api/v1/bins/' + bin.name + '/requests',
     json: true,
     headers: headers
-  }, function(err, resp, body) {
+  }, function (err, resp, body) {
     cb(err, resp, body)
   })
 }
 
 // {
-//   "method": "GET",
+//   "method": 'GET',
 //   "path": "/zsdmvmzs",
 //   "form_data": {},
 //   "body": "",
