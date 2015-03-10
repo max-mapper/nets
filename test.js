@@ -112,6 +112,11 @@ test('DELETE', function (t) {
   })
 })
 
+test('returns value', function (t) {
+  t.ok(nets({url: 'http://localhost'}, function () {}), 'nets has return value')
+  t.end()
+})
+
 function getRequests (cb) {
   nets({
     url: binUrl + '/api/v1/bins/' + bin.name + '/requests',

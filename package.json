@@ -13,10 +13,10 @@
   },
   "dependencies": {
     "request": "^2.53.0",
-    "tape": "^2.13.1",
     "xhr": "^2.0.1"
   },
   "devDependencies": {
+    "tape": "^2.13.1",
     "standard": "^3.0.0-beta"
   },
   "repository": {

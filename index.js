@@ -20,5 +20,5 @@ function Nets (opts, cb) {
     originalCb(err, resp, body)
   }
 
-  req(opts, cb)
+  return req(opts, cb)
 }
